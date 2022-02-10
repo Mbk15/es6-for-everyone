@@ -187,6 +187,50 @@
       for (const char of mbk) {
         console.log(char);
       }
+
+      /*more on for of loop>*/
+
+      //using native forloop
+      for (let i = 0; i < cuts.length; i++) {
+        console.log(`This is the forloop ouput ${cuts[i]}`);
+      }
+
+      //using forEach
+      cuts.forEach((cut) => {
+        console.log(`This is the forEach ouput ${cut}`);
+      });
+
+      //using forIn
+      for (cut in cuts) {
+        console.log(`This is the forIn ouput ${cut}`);
+      }
+
+      //using forOf which is the best for absolutely any Array type of data
+
+      for (cut of cuts) {
+        console.log(`This is the forOf ouput ${cut}`);
+      }
+
+      /*Iterating Object enteries*/
+
+      const apple = {
+        color: "Red",
+        size: "medium",
+        weight: 50,
+        sugar: 10,
+      };
+      //using forOf for Objects
+      for (const fruit of Object.keys(apple)) {
+        const value = apple[fruit];
+        console.log(fruit, value);
+      }
+
+      //using forIn which is the best for absolutely any Object data type
+
+      for (const fruit in apple) {
+        const value = apple[fruit];
+        console.log(fruit, value);
+      }
     </script>
   </body>
 </html>
