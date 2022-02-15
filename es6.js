@@ -215,3 +215,32 @@ for (const fruit in apple) {
   const value = apple[fruit];
   console.log(fruit, value);
 }
+
+// Array.from and Array.of usage (note, both are not on the prototype)
+const personM = document.querySelectorAll(".people p");
+console.log(personM); //prototype here is nodeList
+const personmArray = Array.from(personM); //protoype converted with this line
+const people = personmArray.map((persons) => persons.textContent);
+console.log(people); // proto has been turned to array with Array.from()
+
+//cleaner method
+
+const peopleArray = Array.from(personM, (resultedPerson) => {
+  return resultedPerson.textContent;
+});
+
+console.log(peopleArray);
+
+//using Array.from() with function
+
+function sumAll() {
+  const nums = Array.from(arguments);
+  return nums.reduce((prev, next) => prev + next, 0);
+}
+
+console.log(sumAll(23, 56, 78, 90, 234, 89));
+
+//Array.of() turns arguments into Array
+
+const arrayOf = Array.of(23, 45, 67, 89, 09);
+console.log(arrayOf);
