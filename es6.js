@@ -244,3 +244,60 @@ console.log(sumAll(23, 56, 78, 90, 234, 89));
 
 const arrayOf = Array.of(23, 45, 67, 89, 09);
 console.log(arrayOf);
+
+//Array.some() and .every()
+
+const leaguePosition = [3, 7, 2, 18, 11, 20, 6];
+
+const checkEuroQual = leaguePosition.some((position) => position >= 6);
+
+console.log(checkEuroQual); //returns true if at least one of the positions is greater than or equals to 6
+
+const checkChampionQual = leaguePosition.every((champ) => champ >= 4);
+
+console.log(checkChampionQual); // returns false cos not all the teams made champions Qualification
+
+/********** THE ... SPREAD OPERATOR *************/
+
+const mubrek = "Ash-shattry";
+
+console.log([...mubrek]); // spreads each of the string element as individual element
+
+const featured = ["Deep Dish", "Peperoni", "BBQ", "Gizzardo"];
+const speciality = ["Meatza", "Spicy Mama", "Margherita"];
+const pizzas = [...featured, ...speciality]; //spreads the first array and the second array in a single one
+console.log(pizzas);
+
+const fridayPizzas = pizzas; // the spread output can be copied through assignment operation
+
+fridayPizzas[0] = "Ekuru";
+
+console.log(fridayPizzas); //returns all pizzas with the first element altered and the first pizza tampered
+
+const thursdayPizza = [...pizzas]; // copies everything without tampering the original element
+
+thursdayPizza[0] = "Ponmo";
+
+console.log(thursdayPizza);
+console.log(pizzas);
+for (pizz of pizzas) {
+  console.log(pizz);
+}
+
+/*********Spread Operator Practice */
+
+const heading = document.querySelector(".jump");
+
+const headingLetters = heading.textContent;
+const testBreak = breakLetters(headingLetters);
+console.log(headingLetters);
+console.log(testBreak);
+const finalBreak = testBreak.map((test) => `<span>${test}</span>`).join(" ");
+heading.innerHTML = finalBreak;
+
+console.log(finalBreak);
+function breakLetters(word) {
+  return [...word];
+}
+
+// conflict not yet resolved
