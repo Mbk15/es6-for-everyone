@@ -245,6 +245,7 @@ console.log(sumAll(23, 56, 78, 90, 234, 89));
 const arrayOf = Array.of(23, 45, 67, 89, 09);
 console.log(arrayOf);
 
+<<<<<<< HEAD
 //Array.some() and .every()
 
 const leaguePosition = [3, 7, 2, 18, 11, 20, 6];
@@ -301,3 +302,5 @@ function breakLetters(word) {
 }
 
 // conflict not yet resolved
+=======
+>>>>>>> a32e827582ec97dc8b1fb6887aaf106273abd87a
