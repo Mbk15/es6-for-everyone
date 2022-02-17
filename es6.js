@@ -217,10 +217,14 @@ for (const fruit in apple) {
 }
 
 // Array.from and Array.of usage (note, both are not on the prototype)
+
 const personM = document.querySelectorAll(".people p");
 console.log(personM); //prototype here is nodeList
+
 const personmArray = Array.from(personM); //protoype converted with this line
+
 const people = personmArray.map((persons) => persons.textContent);
+
 console.log(people); // proto has been turned to array with Array.from()
 
 //cleaner method
@@ -243,32 +247,52 @@ console.log(sumAll(23, 56, 78, 90, 234, 89));
 //Array.of() turns arguments into Array
 
 const arrayOf = Array.of(23, 45, 67, 89, 09);
+
 console.log(arrayOf);
 //Array.some() and .every()
 
 const leaguePosition = [3, 7, 2, 18, 11, 20, 6];
 const checkEuroQual = leaguePosition.some((position) => position >= 6);
+
 console.log(checkEuroQual); //returns true if at least one of the positions is greater than or equals to 6
+
 const checkChampionQual = leaguePosition.every((champ) => champ >= 4);
+
 console.log(checkChampionQual); // returns false cos not all the teams made champions Qualification
+
 /********** THE ... SPREAD OPERATOR *************/
+
 const mubrek = "Ash-shattry";
+
 console.log([...mubrek]); // spreads each of the string element as individual element
+
 const featured = ["Deep Dish", "Peperoni", "BBQ", "Gizzardo"];
+
 const speciality = ["Meatza", "Spicy Mama", "Margherita"];
+
 const pizzas = [...featured, ...speciality]; //spreads the first array and the second array in a single one
+
 console.log(pizzas);
+
 const fridayPizzas = pizzas; // the spread output can be copied through assignment operation
+
 fridayPizzas[0] = "Ekuru";
+
 console.log(fridayPizzas); //returns all pizzas with the first element altered and the first pizza tampered
+
 const thursdayPizza = [...pizzas]; // copies everything without tampering the original element
+
 thursdayPizza[0] = "Ponmo";
+
 console.log(thursdayPizza);
+
 console.log(pizzas);
+
 for (pizz of pizzas) {
   console.log(pizz);
 }
 /*********Spread Operator Practice */
+
 const heading = document.querySelector(".jump");
 const headingLetters = heading.textContent;
 const testBreak = breakLetters(headingLetters);
@@ -280,3 +304,51 @@ console.log(finalBreak);
 function breakLetters(word) {
   return [...word];
 }
+
+//spreading into a function
+
+const investors = ["Eintein", "Alexander", "Graham", "Newton"];
+const newInventors = ["musk", "Job", "Ma"];
+
+investors.push(newInventors);
+console.log(investors); //  returns array of investors with newInvestors as an embeded array section
+
+//to ammend that, we can use apply() method to correct it
+investors.push.apply(investors, newInventors);
+
+console.log(investors);
+
+//using the spread operator ultimate solution
+
+investors.push(...newInventors);
+
+console.log(investors);
+
+//spreading into a real function
+
+const spreadName = ["Mubarak", "Jamiu"];
+
+function sayTeslim(first, last) {
+  alert(`Salam alaykum ${first} ${last}`);
+}
+
+console.log(sayTeslim(...spreadName)); //Spread Operator comes in handy instead of using array bracket notation
+
+/** The REST Parameter*/
+
+//majorly used in function and destructuring
+
+//function useCase
+function convertNaira(rate, ...amounts) {
+  return amounts.map((amount) => amount * rate);
+}
+
+console.log(convertNaira(1.45, 67, 89, 90, 45, 33));
+
+//Destructuring UseCase
+
+const runner = ["Usain Bolt", 124, 4.5, 6.6, 8.4];
+
+const [runnerName, runId, ...runs] = runner;
+
+console.log(runnerName, runId, runs); // returns the name , id and the rest inputs as run
