@@ -375,7 +375,7 @@ promisePosts.then((data) =>
 const testPromise = new Promise((resolve, reject) => {
   setTimeout(() => {
     resolve("MBk dey enjoy JS");
-  }, 2000);
+  }, 200);
 })
   .then((data) => {
     console.log(data);
@@ -383,3 +383,33 @@ const testPromise = new Promise((resolve, reject) => {
   .catch((err) => {
     console.error(err);
   });
+
+//posts data
+const posts = [
+  { title: "I love Javascript", author: "Munkamish", id: 1 },
+  { title: "I be React Fan Boy", author: "Shattry", id: 2 },
+  { title: "I Sabi this JS small ooo ", author: "Mubarak", id: 3 },
+];
+//authors data
+const authors = [
+  { name: "Mbk", twitter: "@Dela Cruise", bio: "Nigerian" },
+  { name: "Jokanola", twitter: "@yusuf", bio: "European" },
+  { name: "Winnie", twitter: "@fullstackbeast", bio: "Agba Dev" },
+];
+
+function getPostById(id) {
+  //create new promise
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const post = posts.find((post) => post.id === id); // look for matching post
+      if (post) {
+        resolve(post);
+      } else {
+        reject(Error("No match post"));
+      }
+    });
+  }, 2000);
+}
+getPostById(3).then((post) => {
+  console.log(post);
+});
