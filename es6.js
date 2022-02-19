@@ -352,3 +352,34 @@ const runner = ["Usain Bolt", 124, 4.5, 6.6, 8.4];
 const [runnerName, runId, ...runs] = runner;
 
 console.log(runnerName, runId, runs); // returns the name , id and the rest inputs as run
+
+/****ES6 Promises******/
+
+console.log("Going to fetch Data from Mubarak/s Blog");
+const promisePosts = fetch("https://jsonplaceholder.typicode.com/posts"); //fetc data from api
+promisePosts.then((data) =>
+  data
+    .json()
+    .then((data) => {
+      // block to process data
+      console.log(data);
+    })
+    .catch((err) => {
+      //  Catch error
+      console.error(err);
+    })
+);
+
+// Building your own Promises
+
+const testPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("MBk dey enjoy JS");
+  }, 2000);
+})
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
