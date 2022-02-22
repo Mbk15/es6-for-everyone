@@ -413,3 +413,66 @@ function getPostById(id) {
 getPostById(3).then((post) => {
   console.log(post);
 });
+
+//MULTIPLE PROMISE
+
+const weather = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve({ temp: 40, conditions: "sunny with clouds" });
+  }, 2000);
+});
+
+const tweetss = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve(["I like Cake", "BBQ also isnt bad"]);
+  });
+}, 500);
+
+Promise.all([weather, tweetss]).then((responses) => {
+  const [weatherInfo, tweetsInfo] = responses;
+  console.log(weatherInfo, tweetsInfo);
+});
+
+const usersPlace = fetch("https://jsonplaceholder.typicode.com/users");
+
+const albulmPlace = fetch("https://jsonplaceholder.typicode.com/albums");
+
+Promise.all([usersPlace, albulmPlace]).then((responses) => {
+  return Promise.all(responses.map((res) => res.json())).then((responses) => {
+    //transform response into array
+    console.log(responses);
+  });
+});
+
+//Using Symbols
+
+/** Prototypes in Javascript
+ *  * Object
+ * String
+ * Boolean
+ * Number
+ * Null
+ * Undefined
+ * (New Comer) Symbol
+ */
+
+const Shatir = Symbol("Shatir");
+
+const Abubakr = Symbol("shatir");
+
+console.log(Shatir, Abubakr);
+
+const classRoom = {
+  [Symbol("mubarak")]: { name: "Olalekan", gender: "male", age: 10 },
+  [Symbol("Yusuf")]: { name: "Jokanola", gender: "male", age: 20 },
+  [Symbol("mubarak")]: { name: "Olalekan", gender: "male", age: 10 },
+};
+//symbols are uniterable and can hence be used to store secured data
+
+console.log(classRoom);
+
+//To acesss the Data within encrypted Symbols
+const syms = Object.getOwnPropertySymbols(classRoom);
+
+const symb = syms.map((sym) => classRoom[sym]);
+console.log(symb);
